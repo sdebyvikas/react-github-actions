@@ -1,18 +1,26 @@
-name: "first-workflow"
-on: push
+name: First Workflow
 
-jobs: 
-    first-job:
-        run-on: ubuntu-latest
-        steps:
-            - name: checkout
-              uses: action/checkout@v4
-              with: 
-                node-version: 24
-                cache: npm
+on:
+  push:
+    branches:
+      - main
 
-            - name: install dependency
-              run: npm ci
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-            - name: make react build
-              run: npm run build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
