@@ -77,5 +77,23 @@ jobs:
             path: dist/
             retention-days: 8
 
+  deploy-job:
+    needs: [lint-job, test-job, build-job ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+  
+      - name: "install vercel"
+        run: npm install --global vercel
+
+      - name: deployement on vercel 
+        run: vercel --prod --yes  --token="${{secrets.VERCEL_TOKEN}}"
+
+
+
+
 
 
