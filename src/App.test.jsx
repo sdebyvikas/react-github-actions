@@ -13,7 +13,7 @@ test("renders Vikas heading", () => {
 
   const heading = screen.getByRole("heading", {
     level: 1,
-    name: /vikas kumar new code000/i,
+    name: /vikas kumar new code/i,
   });
 
   expect(heading).toBeInTheDocument();
@@ -24,7 +24,7 @@ test("renders branch heading", () => {
 
   const heading = screen.getByRole("heading", {
     level: 2,
-    name: /react github action branch 2222/i,
+    name: /react github action branch 2/i,
   });
 
   expect(heading).toBeInTheDocument();
